@@ -1,6 +1,6 @@
 # Cluster-Analysis
 
-## Code for analyzing telomeresuper-resolution data from either STORM or PALM
+## Code for analyzing telomer esuper-resolution data from either STORM or PALM
 * This code consists of several scripts for analyzing telomere clusters obtained from STORM or PALM data. 
 * This code is used in conjuction with the Insight Software (Copyright Bo Huang)
 
