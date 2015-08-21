@@ -35,28 +35,30 @@ cd = list_save(:,[1 2]);
 cd_norm = [cd(:,1)-x_val,cd(:,2)-y_val];
 
 % Initialize 10x10 grid
-grid = linspace(-2,2,11);
+grid = linspace(-2,2,21);
 [bincount,ind] = histc(cd_norm,grid,1);
-ind(ind == 11) = 10;
+ind(ind == 21) = 20;
 
 % Fit data to 2D Gaussian
-h = accumarray(ind,1,[10 10]);
-x = linspace(-5,5,10);
-y = linspace(-5,5,10);
+h = accumarray(ind,1,[20 20]);
+x = linspace(-2,2,20);
+y = linspace(-2,2,20);
 [fitresult, gof] = Data_Fit(x,y,h)
 
-% Obtain std. dev. and determine fwhm
+% Obtain std. dev. and determine fwhm in nm
+pix = 123
 coeff = coeffvalues(fitresult);
-sigx = coeff(3);
-sigy = coeff(5);
-fwhm_x = 2*sqrt(2*log(2))*sigx;
-fwhm_y = 2*sqrt(2*log(2))*sigy;
-stat = [stat;[fwhm_x fwhm_y]]
+sigx = abs(coeff(3));
+sigy = abs(coeff(5));
+fwhm_x = pix*2*sqrt(2*log(2))*sigx;
+fwhm_y = pix*2*sqrt(2*log(2))*sigy;
+stat = [stat;[fwhm_x fwhm_y]];
 
 % Alternative histogram plot
-% hist3(cd_norm)
+% hist3(cd_norm,[20,20])
 end
 
 % Save to file
+xlswrite('fwhm_data.xlsx',stat);
 save ('fwhm_data.txt', 'stat', '-ascii', '-tabs');
 
