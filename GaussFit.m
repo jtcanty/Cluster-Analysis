@@ -31,11 +31,11 @@ opts.StartPoint = [0 0 0 50 50 50];
 % Plot fit with data.
 figure( 'Name', 'untitled fit 1' );
 h = plot( fitresult, [xData, yData], zData );
-legend( h, 'untitled fit 1', 'H vs. x_axis, x_axis', 'Location', 'NorthEast' );
+legend( h, 'Gaussian Fit to Cluster', 'Raw Data', 'Location', 'NorthEast' );
 % Label axes
-xlabel x_axis
-ylabel x_axis
-zlabel H
+xlabel 'Y axis'
+ylabel 'X axis'
+zlabel Histogram
 grid on
 view( -37.5, 44.0 );
 
