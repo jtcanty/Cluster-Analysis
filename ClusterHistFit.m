@@ -54,12 +54,13 @@ grid = linspace(-len,len,21);
 % Generate histogram
 H = accumarray(ind,1,[21 21]);
 
+%{
 %% -------------Fit Parameters----------------------
 MDataSize = 20; % size of nxn matrix
 % parameters = [Amp,x0,y0,sigma_x,sigma_y,Covxx,Covxy,Covyy,angle(radians)]
 x0 = [100,0,0,50,50,1,1,1,0]; % Initial parameter guess
 x = x0;
-
+%}
 
 %% -------------Generate coordinate grid to overlay histogram over-------
 x_axis = linspace(-len,len,21);
@@ -132,20 +133,20 @@ m1 = EigV1(2)/EigV1(1);
 b1 = -m1*coeff(1) + coeff(2);
 xv1 = grid;
 yv1 = m1*xv1 + b1;
-EigPoints1 = interp2(X,Y,H,xv1,yv1,InterpolationMethod);
+EigPoints1 = interp2(X,Y,H,xv1,yv1,'linear');
 
 % Second eigenvector
 m2 = EigV2(2)/EigV2(1);
 b2 = -m2*coeff(1) + coeff(2);
 xv2 = grid;
 yv2 = m2*xv2 + b2;
-EigPoints2 = interp2(X,Y,H,xv2,yv2,InterpolationMethod);
+EigPoints2 = interp2(X,Y,H,xv2,yv2,'linear');
 
 % Plot lines
 hold on
 
 plot([xv1(1) xv1(size(xv1))],[yv1(1) yv1(size(yv1))],'r') ;
-plot([xv2(1) xv2(size(xv2))],[yvv(1) yv2(size(yv2))],'g') ;
+plot([xv2(1) xv2(size(xv2))],[yv2(1) yv2(size(yv2))],'g') ;
 
 hold off
 
@@ -155,7 +156,7 @@ end
 xlswrite('fwhm_data.xlsx',stat);
 save ('fwhm_data.txt', 'stat', '-ascii', '-tabs');
 
-
+close all;
  
  
 
