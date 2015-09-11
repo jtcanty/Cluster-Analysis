@@ -117,7 +117,7 @@ set(gca,'YDir','normal')  % set current axis handle properties
 colormap('jet')
 
 % Plot covariance information
-string1 = ['            Minor Axis','                       Major Axis', '              Major Axis FWHM','       Minor Axis FWHM'];
+string1 = ['            Minor Axis','                       Major Axis', '              Minor Axis FWHM','       Major Axis FWHM'];
 string2 = ['       ',num2str(EigVec(:,1)'),'       ',num2str(EigVec(:,2)'),'            ',num2str(FWHM(1)),'                 ',num2str(FWHM(2))];
 text(-225,-250,string1,'Color','red')
 text(-225,-275,string2,'Color','red')
