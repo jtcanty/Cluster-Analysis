@@ -71,7 +71,7 @@ for i = 1:num
 
         % Calculate area of modified cluster
         [k,v1] = convhull(locs4(:,1),locs4(:,2),'simplify', false);
-        area = (v1)*122^2 % initial area calculation
+        area = (v1)*pixel^2 % initial area calculation
         area_num = [area,num]
 
         % Decide whether or not to save the file.
