@@ -23,7 +23,7 @@ ft = fittype( 'p*exp(-((cos(f)^2/(2*g^2) + sin(f)^2/(2*h^2))*(x-d).^2+2*(-sin(2*
 opts = fitoptions( 'Method', 'NonlinearLeastSquares' );
 opts.Algorithm = 'Levenberg-Marquardt';
 opts.Display = 'Off';
-opts.StartPoint = [0 0 0 50 50 50];
+opts.StartPoint = [0 0 pi/4 100 100 100];
 
 % Fit model to data.
 [fitresult, gof] = fit( [xData, yData], zData, ft, opts );
