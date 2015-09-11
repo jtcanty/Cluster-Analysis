@@ -12,7 +12,7 @@ m = zeros(num,2);
 
 % Iterate over excel files
 for i = 1:num
-    f = 'cluster';
+    f = 'roi';
     file = strcat(f,num2str(i),'.xlsx');
     data = xlsread(file,'A1:B1');
     m(i,:) = data;
