@@ -7,7 +7,7 @@
 % and generates a correlation plot of spot intensity vs cluster size.
 
 % Function calls:
-% GaussFit.m - generates a bivariate Gaussian fit to the cluster
+% None
 
 %%---------------Extract Z-stack Ints/Coords ---------------------
 % Make sure you are navigated to the Z-stack working directory
