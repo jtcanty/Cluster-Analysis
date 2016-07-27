@@ -19,8 +19,8 @@ while Register == 1
     QFISHcoordsbrushed = [X{2}',Y{2}'];
 
     % Append transformed coordinates to QFISH/STORM data variables
-    QFISHdatabrush = [QFISHdata,QFISHcoordsbrushed];
-    STORMdatabrush = [STORMdata,STORMcoordsbrushed];
+    QFISHdatabrush = [QFISHdata(:,[1:9]),QFISHcoordsbrushed];
+    STORMdatabrush = [STORMdata(:,[1:4]),STORMcoordsbrushed];
 
     %Finds the indices of uncleared QFISH/STORM data points using 'isnan', then
     %extracts the corresponding data from QFISHdata and STORMdata and stores it
@@ -39,7 +39,10 @@ while Register == 1
         Register = 0
         QFISHfinalbrushed = QFISHdatamatch;
         STORMfinalbrushed = STORMdatamatch;
+        break
     else
-        
-        
+        Register = 1
+        QFISHcoords = QFISHcoordsbrushed;
+        STORMcoords = STORMcoordsbrushed;
+    end    
 end
