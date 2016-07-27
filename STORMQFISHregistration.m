@@ -104,14 +104,14 @@ STORMdatamatch = STORMdatabrush(~any(isnan(STORMdatabrush),2),:);
 QFISHcoordsbrushed1 = QFISHdatamatch(:,10:11);
 STORMcoordsbrushed1 = STORMdatamatch(:,5:6);
 
-% Repeat registration to confirm matching
+% Final registration to confirm matching
 close all
 
 opt.method='nonrigid';
 [Transform2, C2]=cpd_register(QFISHcoordsbrushed1,STORMcoordsbrushed1, opt);title('After registering STORM coordinates to QFISH coordinates');
-savefig('STORM/QFISH registration');
+savefig('STORMtoQFISH registration');
 
-h = findobj(gca,'Type','line');
+h = findobj(gca,'Type','line');        
 X2 = get(h,'Xdata');
 Y2 = get(h,'Ydata');
 
