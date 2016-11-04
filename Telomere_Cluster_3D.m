@@ -80,10 +80,17 @@ for i = 1:num
         num = length(locs4);
         disp(num);
        
-        % Calculate area of modified cluster
-        [k,v1] = convhull(locs4(:,1),locs4(:,2),'simplify', false);
-        area = (v1)*pixel^2 % initial area calculation
-        area_num = [area,num]
+        % Calculate volume of modified cluster using alpha shapes
+        shp = alphaShape(locs4(:,1),locs4(:,2),locs4(:,3));
+        convhull = alphaShape(locs4(:,1),locs4(:,2),locs4(:,3),Inf);
+        alpha_vol = volume(shp);
+        convhull_vol = volume(convhull);
+        vol_num = [alpha_vol,convhull_vol,num];
+        
+        % Plot alpha shape over scatter plot
+        hold on
+        plot(shp);
+        alpha(0.5);
         
         % Save final data coordinates
         fname=strcat('roi',num2str(i),'_remain.txt');
@@ -98,7 +105,7 @@ for i = 1:num
             pic = input(prompt,'s') 
             savefig(h,pic) % Save figure
             excel = strcat(pic,'.xlsx');
-            xlswrite(excel,area_num) % Save area of cluster into excel spreadsheet
+            xlswrite(excel,vol_num) % Save area of cluster into excel spreadsheet
         end    
 
         prompt = 'To view next cluster hit enter. To continue editing, press any key followed by enter: ';
