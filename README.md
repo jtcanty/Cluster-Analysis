@@ -1,14 +1,11 @@
-# Cluster-Analysis
+# STORM/PALM analysis
+This repository contains various scripts for analyzing STORM/PALM cluster data. The scripts should be used in conjuction with the Insight Software package (Copyright Bo Huang, UCSF).
 
-## Code for analyzing telomere super-resolution data from either STORM or PALM
-* This code consists of several scripts for analyzing telomere clusters obtained from STORM or PALM data. 
-* This code is used in conjuction with the Insight Software (Copyright Bo Huang)
-
-##  Information on contained functions
+# Description of subroutines
 * Assuming that a super-resolution data-set has been collected using Insight and that telomere clusters have been identified
   and saved as .txt files.
   
-  RipleyK.m: Applys the Ripley-K algorithm to each .txt file and identifies spots with the highest k-values. An ROI is defined
+  RipleyK.m: Applies the Ripley-K algorithm to each .txt file and identifies spots with the highest k-values. An ROI is defined
              around these spots which contains the cluster to be analyzed.
   
   Telomere_Cluster.m: Iterates over outputted RipleyK files and allows the user to subtract noise manually. The area and number
